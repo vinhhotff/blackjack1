@@ -405,7 +405,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  pt: 10px;
+  padding-top: 10px;
   z-index: 10;
   border-bottom: none;
 }
@@ -934,75 +934,105 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  width: 100%;
-  border: 2px solid rgba(240, 192, 64, 0.1);
-  padding: 10px;
-  border-radius: 40px;
-  background: rgba(0, 0, 0, 0.15);
+  gap: 12px;
+  width: auto;
+  margin: 5px auto 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  z-index: 50;
 }
 
-/* Bet circle */
+/* Bet circle refinement */
 .bet-circle {
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, .2);
-  background: rgba(0, 0, 0, .4);
+  border: 2px solid rgba(240, 192, 64, 0.4);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: default;
-  transition: var(--tr);
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   font-family: 'Outfit', sans-serif;
-  font-weight: 700;
+  font-weight: 800;
   flex-shrink: 0;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 0, 0, 0.8);
+  position: relative;
 }
 
 .bet-circle-md {
-  width: 56px;
-  height: 56px;
-  font-size: 12px;
-  border-width: 3px;
+  width: 50px;
+  height: 50px;
+  font-size: 11px;
 }
 
 .bet-circle-sm {
-  width: 40px;
-  height: 40px;
-  font-size: 10px;
+  width: 36px;
+  height: 36px;
+  font-size: 8px;
 }
 
 .bet-circle-active {
   cursor: pointer;
-  border-color: rgba(240, 192, 64, .4);
+  border-color: rgba(240, 192, 64, 0.5);
 }
 
 .bet-circle-active:hover {
   border-color: var(--gold);
-  background: rgba(240, 192, 64, .2);
-  transform: scale(1.1);
-  box-shadow: 0 0 15px rgba(240, 192, 64, 0.3);
-}
-
-.bet-circle-active:active {
-  transform: scale(.95);
+  background: rgba(240, 192, 64, 0.2);
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 5px 18px rgba(240, 192, 64, 0.4);
 }
 
 .bet-circle-has-bet {
   border-color: var(--gold);
-  background: radial-gradient(circle, rgba(240, 192, 64, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background: radial-gradient(circle, rgba(240, 192, 64, 0.5) 0%, rgba(10, 20, 10, 0.9) 100%);
+  border-width: 3px;
+  box-shadow: 0 0 15px rgba(240, 192, 64, 0.5), inset 0 0 8px rgba(0, 0, 0, 0.4);
 }
 
 .bc-amount {
-  color: var(--gold);
-  font-weight: 800;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-weight: 900;
+  text-shadow: 0 0 8px var(--gold), 0 2px 4px rgba(0, 0, 0, 1);
 }
 
 .bc-label {
-  color: rgba(255, 255, 255, .3);
-  font-weight: 600;
-  letter-spacing: 1px;
+  color: var(--gold);
+  opacity: 0.9;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
+
+
+/* Extra hand circle */
+.pseat-extra-hand-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px dashed rgba(240, 192, 64, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.3);
+  transition: all 0.2s;
+  color: rgba(240, 192, 64, 0.6);
+  font-size: 24px;
+  font-weight: 300;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.pseat-extra-hand-circle:hover {
+  border-color: var(--gold);
+  background: rgba(240, 192, 64, 0.15);
+  transform: scale(1.15) rotate(90deg);
+  color: var(--gold);
+  box-shadow: 0 0 20px rgba(240, 192, 64, 0.3);
+}
+
 
 /* Action buttons */
 .hcard-actions {
@@ -1257,7 +1287,7 @@ body {
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 1px;
-  mt: 2px;
+  margin-top: 2px;
 }
 
 /* Chips */
@@ -2022,4 +2052,159 @@ body {
 
 .act-hz:active {
   transform: scale(.95);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .game-layout {
+    grid-template-columns: 1fr !important;
+    height: 100vh !important;
+    background: #000 !important;
+  }
+
+  .sidebar {
+    display: none !important;
+  }
+
+  /* Compact Table for mobile */
+  .table-wrap {
+    padding: 8px !important;
+    justify-content: center;
+  }
+
+  .felt-table {
+    flex: 0 0 65vh !important;
+    /* Fixed height on mobile to prevent stretching */
+    min-height: 480px !important;
+    border-radius: 20px 20px 100px 100px !important;
+    border-bottom-width: 12px !important;
+    margin-bottom: 5px !important;
+  }
+
+  .table-deco {
+    font-size: 10px !important;
+    top: 35% !important;
+    letter-spacing: 2px !important;
+  }
+
+  /* Shrink cards */
+  .playing-card {
+    width: 44px !important;
+    height: 64px !important;
+  }
+
+  .card-rank-text {
+    font-size: 11px !important;
+  }
+
+  .card-suit-text {
+    font-size: 8px !important;
+  }
+
+  .card-center-symbol {
+    font-size: 20px !important;
+  }
+
+  /* Compact Chip Picker */
+  .cpicker {
+    padding: 8px !important;
+    min-height: auto !important;
+    gap: 5px !important;
+  }
+
+  .cpicker-row {
+    gap: 8px !important;
+  }
+
+  .cp-chips {
+    gap: 5px !important;
+  }
+
+  .cp-chip {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .cp-chip-lbl {
+    font-size: 11px !important;
+  }
+
+  .cpicker-hint {
+    font-size: 9px !important;
+    display: none;
+    /* Hide hint on mobile to save space */
+  }
+
+  /* Smaller HUD */
+  .central-action-hud {
+    padding: 10px 15px !important;
+    width: 94% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) scale(0.9) !important;
+    gap: 8px !important;
+  }
+
+  .hud-title {
+    font-size: 11px !important;
+  }
+
+  .hud-actions {
+    gap: 6px !important;
+  }
+
+  .act-hz {
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+  }
+
+  /* Seat scaling */
+  .pseat-extra-hand-circle {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 16px !important;
+  }
+
+  .bet-circle-md {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 9px !important;
+  }
+
+  .bet-circle-sm {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 7px !important;
+  }
+
+  .bet-zones-row {
+    gap: 6px !important;
+  }
+
+  .pseat-info {
+    padding: 2px 6px !important;
+    scale: 0.85;
+    margin-top: 0 !important;
+  }
+
+  .pseat-avatar {
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 11px !important;
+  }
+
+  .pseat-name {
+    max-width: 50px !important;
+    font-size: 9px !important;
+  }
+
+  .pseat-chips {
+    font-size: 8px !important;
+  }
+
+  .notice-bar {
+    font-size: 10px !important;
+    padding: 6px 12px !important;
+    bottom: 5px !important;
+    width: 70% !important;
+  }
 }

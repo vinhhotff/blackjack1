@@ -10,13 +10,14 @@ import HistoryPanel from './HistoryPanel';
 
 // Positioning for an arc (casino table layout)
 const SEATS_POS = [
-    { left: '12%', top: '55%' }, // Seat 1
-    { left: '26%', top: '75%' }, // Seat 2
-    { left: '42.5%', top: '85%' }, // Seat 3
-    { left: '57.5%', top: '85%' }, // Seat 4
-    { left: '74%', top: '75%' }, // Seat 5
-    { left: '88%', top: '55%' }, // Seat 6
+    { left: '14%', top: '55%' }, // Seat 1
+    { left: '28%', top: '75%' }, // Seat 2
+    { left: '42%', top: '85%' }, // Seat 3
+    { left: '58%', top: '85%' }, // Seat 4
+    { left: '72%', top: '75%' }, // Seat 5
+    { left: '86%', top: '55%' }, // Seat 6
 ];
+
 
 export default function GameTable() {
     const { socket, room, messages, bettingTimeLeft, userId } = useSocket();

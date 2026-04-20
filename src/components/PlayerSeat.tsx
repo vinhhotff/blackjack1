@@ -177,9 +177,15 @@ export default function PlayerSeat({ player, spotIndex, isCurrentUser, isActive,
 }
 
 export function EmptySeat({ seatIndex, onJoin, label }: { seatIndex: number; onJoin: (i: number) => void; label?: string }) {
+    const isExtraHand = label?.includes('THÊM TAY');
+
     return (
-        <div className="pseat-empty-btn" onClick={() => onJoin(seatIndex)}>
-            <span className="join-txt">{label || `+ Ghế ${seatIndex}`}</span>
+        <div
+            className={isExtraHand ? "pseat-extra-hand-circle" : "pseat-empty-btn"}
+            onClick={() => onJoin(seatIndex)}
+        >
+            <span className="join-txt">{isExtraHand ? "+" : (label || `+ Ghế ${seatIndex}`)}</span>
         </div>
     );
 }
+
